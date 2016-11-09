@@ -1,0 +1,60 @@
+.row
+  .col-md-3
+  .col-md-6
+    .auth-form-header.text-center
+      = t(".title")
+    .auth-form-body
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = hidden_field :ticket, :data, {:value => @ticket.ticket}
+        = f.hidden_field :email, {:value => @ticket.email}
+
+        .form-group{:class => (@errors.key?(:name) or @errors.key?(:name2)) ? "has-error" : "" }
+          = f.label t(".name"), {:class => "control-label"}
+          .row
+            .col-md-6
+              = text_field :email, :name, autofocus: true, :class => "form-control", :value => @data[:name].present? ? @data[:name] : ""
+              - if @errors.key?(:name)
+                %p{:class => "control-label"}= @errors[:name]
+            .col-md-6
+              = text_field :email, :name2, autofocus: true, :class => "form-control", :value => @data[:name2].present? ? @data[:name2] : ""
+              - if @errors.key?(:name2)
+                %p{:class => "control-label"}= @errors[:name2]
+
+        .form-group{:class => (@errors.key?(:name_read) or @errors.key?(:name_read2)) ? "has-error" : "" }
+          = f.label t(".name_read"), {:class => "control-label"}
+          .row
+            .col-md-6
+              = text_field :email, :name_read, :class => "form-control", :value => @data[:name_read].present? ? @data[:name_read] : ""
+              - if @errors.key?(:name_read)
+                %p{:class => "control-label"}= @errors[:name_read]
+            .col-md-6
+              = text_field :email, :name_read2, :class => "form-control", :value => @data[:name_read2].present? ? @data[:name_read2] : ""
+              - if @errors.key?(:name_read2)
+                %p{:class => "control-label"}= @errors[:name_read2]
+
+        .form-group{:class => @errors.key?(:password) ? "has-error" : "" }
+          = f.label t(".password"), {:class => "control-label"}
+          - if @validatable
+            %i
+              (#{@minimum_password_length} characters minimum)
+          %br/
+          = f.password_field :password, autocomplete: "off", :class => "form-control"
+          - if @errors.key?(:password)
+            %p{:class => "control-label"}= @errors[:password]
+
+        .form-group{:class => @errors.key?(:password_confirmation) ? "has-error" : "" }
+          = f.label t(".password_confirmation"), {:class => "control-label"}
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "off", :class => "form-control"
+          - if @errors.key?(:password_confirmation)
+            %p{:class => "control-label"}= @errors[:password_confirmation]
+
+        .form-group
+          %label{:class => "control-label"}
+            = t(".terms")
+          %i= t(".tems_att")
+          %br
+          = render 'users/registrations/layouts/terms'
+
+        %button{:type => "submit", :id => "jsRegisterdSubmit", :class => "btn btn-primary js-btn-submit"}
+          = t(".register")

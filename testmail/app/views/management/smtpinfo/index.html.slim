@@ -1,0 +1,27 @@
+.main
+
+  .row
+    .col-md-3
+    .col-md-6
+      .auth-form-header.text-center
+        = "送信元設定"
+      .auth-form-body
+        = form_for @smtpinfos, :url => {:action => "edit"}, :html => {:method => "put"} do |f|
+          .form-group
+            = f.label "ホスト", {:class => "control-label"}
+            = f.text_field :address, autofocus: true, :class => "form-control", :value => @smtpinfos[:address].present? ? @smtpinfos[:address] : ""
+          .form-group
+            = f.label "ポート", {:class => "control-label"}
+            = f.text_field :port, autofocus: true, :class => "form-control", :value => @smtpinfos[:port].present? ? @smtpinfos[:port] : ""
+          .form-group
+            = f.label "メールアドレス", {:class => "control-label"}
+            = f.text_field :user_name, autofocus: true, :class => "form-control", :value => @smtpinfos[:user_name].present? ? @smtpinfos[:user_name] : ""
+          .form-group
+            = f.label "パスワード"
+            = f.password_field :encrypted_password, autofocus: true, :class => "form-control", :value => @smtpinfos[:encrypted_password].present? ? SmtpStatus.decrypt(@smtpinfos[:encrypted_password]) : ""
+          .form-group
+            = f.label "送信元表示名"
+            = f.text_field :from_name, autofocus: true, :class => "form-control", :value => @smtpinfos[:from_name].present? ? @smtpinfos[:from_name] : ""
+
+          button#new--submit.btn.btn-primary type="submit" 登録
+          = link_to "閉じる", :back, {:class => "btn btn-default btn-left-margin"}

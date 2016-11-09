@@ -1,0 +1,29 @@
+#routeModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "remoteModalLabel", :role => "dialog", :tabindex => "-1"}
+  %div.modal-dialog
+    %div.modal-content
+      %div.modal-header
+      
+        %h4 経路選択
+        
+      %div.modal-body
+        / タイトル
+        %div.route_modal_title.col-md-12.col-lg-12
+          %ul
+            %li.odd.col-md-6
+              %span 選択可能URL(集計対象にはなりません)
+            %li.even.col-md-6
+              %span 集計対象URL
+          
+        %select{:id => "route-select", "multiple" => "multiple", :name => "my-select[]"}
+            
+          / route          
+          -@route.each do |k, v|
+            %optgroup{:label => "#{k}"}
+              -v.each do |id, name|
+                %option{:val => "#{id}", :selected => "selected"} #{name} 
+                       
+      %div.modal-footer
+        %button{:type => "button", :class => "btn btn-default btn-left", :id => "select-all", :style => "display: none;"} 全選択
+        %button{:type => "button", :class => "btn btn-default btn-left", :id => "deselect-all"} 全解除
+        %button{:type => "button", :class => "btn btn-warning reflect-graph", "data-dismiss" => "modal"} 反映
+

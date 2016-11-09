@@ -1,0 +1,93 @@
+.main
+  h4 送信先登録
+
+  .row
+    .col-md-5.contents-button
+      ul.text-left
+        li
+          = link_to "新規登録", new_staff_register_profile_path, :class => "btn btn-success"
+        li
+          button#staffs-upload.btn.btn-success data-target="#staffs-upload-modal" CSVアップロード
+    .col-md-7.contents-button
+      ul.text-right
+        li
+         = link_to "CSVダウンロード", staff_register_export_csv_path, :id => "staffs-download", :class => "btn btn-warning"
+  .row
+    .col-md-4
+      div#search-box
+        = form_tag(url_for(:action => 'get_filter_data'), :remote => true, :id => "result_form", :class => "contents-search") do
+          = text_field_tag :search_word, nil, :placeholder => "検索", :class => "form-control"
+
+  .row
+    .col-md-12
+      div style="text-align:right;"
+        = paginate @staffs
+
+  .row
+    .col-md-12.csv-sheet
+      table.table.table-condensed.table-hover.table-striped
+        thead
+          tr
+            th No
+            th メールアドレス
+            th 姓
+            th 名
+            th 部署・部門名
+            th 課名
+            th 拠点
+            th 役職
+            th
+        tbody
+          - @staffs.each_with_index do |staff, count|
+            tr
+              th
+                - if @page.blank?
+                  = count + 1
+                - else
+                  = count + 1 + (@page.to_i - 1 ) * 10
+
+              td
+                = staff.email
+              td
+                = staff.name_sei
+              td
+                = staff.name_mei
+              td
+                = staff.unit
+              td
+                = staff.department
+              td
+                = staff.region
+              td
+                = staff.post
+              td
+                = link_to "編集", edit_staff_register_profile_path(staff.id)
+                '|
+                = link_to "削除", staff_register_profile_path(staff.id), :method => :delete, :data => {:confirm => "削除してよろしいでしょうか？"}
+  .row
+    .col-md-12
+      div style="text-align:right;"
+        = paginate @staffs
+
+/ CSVアップロード用モーダル
+#staffs-upload-modal.modal.fade aria-labelledby="import-modal-label" role="dialog"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button"
+          span aria-hidden="true" &times;
+        h4#import-modal-label.modal-title CSVアップロード
+
+      .modal-body
+        p CSVファイルから送信先を登録します。
+        .alert.alert-danger role="alert" style="display:none;"
+        = file_field :file, :csv, multiple: false, name: "csv_file", :style => "display:none;"
+
+        #bars
+        #upload
+          .bottom-area
+            button.btn.btn-info type="button" onClick="$('#file_csv').click();" ファイルの選択
+            p ここにファイルをドラッグ＆ドロップ！
+
+      .modal-footer
+        button.btn.btn-default data-dismiss="modal" type="button" 閉じる

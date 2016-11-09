@@ -1,0 +1,40 @@
+= form_for @staff, :url => {:action => @action}, :html => {:method => @method} do |f|
+
+  .row
+    .col-md-6.col-md-offset-3
+
+      .div class=(@errors.key?(:message) ? "has-error" : "")
+        - if @errors.key?(:message)
+          p.control-label = @errors[:message]
+      .form-group class=(@errors.key?(:email) ? "has-error" : "")
+        = f.label "メールアドレス", {:class => "control-label"}
+        = f.text_field :email, :class => "form-control", :value => @staff[:email].present? ? @staff[:email] : ""
+        - if @errors.key?(:email)
+          p.control-label = @errors[:email]
+      .form-group class=(@errors.key?(:name_sei) ? "has-error" : "")
+        = f.label "姓", {:class => "control-label"}
+        = f.text_field :name_sei, :class => "form-control", :value => @staff[:name_sei].present? ? @staff[:name_sei] : ""
+        - if @errors.key?(:name_sei)
+          p.control-label = @errors[:name_sei]
+      .form-group class=(@errors.key?(:name_mei) ? "has-error" : "")
+        = f.label "名", {:class => "control-label"}
+        = f.text_field :name_mei, :class => "form-control", :value => @staff[:name_mei].present? ? @staff[:name_mei] : ""
+        - if @errors.key?(:name_mei)
+          p.control-label = @errors[:name_mei]
+      .form-group
+        = f.label "部署・部門名", {:class => "control-label"}
+        = f.text_field :unit, :class => "form-control", :value => @staff[:unit].present? ? @staff[:unit] : ""
+      .form-group
+        = f.label "課名", {:class => "control-label"}
+        = f.text_field :department, :class => "form-control", :value => @staff[:department].present? ? @staff[:department] : ""
+      .form-group
+        = f.label "拠点", {:class => "control-label"}
+        = f.text_field :region, :class => "form-control", :value => @staff[:region].present? ? @staff[:region] : ""
+      .form-group
+        = f.label "役職", {:class => "control-label"}
+        = f.text_field :post, :class => "form-control", :value => @staff[:post].present? ? @staff[:post] : ""
+      .form-group
+        = f.hidden_field :seq_no, :class => "form-control", :value => @staff[:seq_no]
+
+      button#new-staff-submit.btn.btn-primary type="submit" 登録
+      = link_to "閉じる", :back, {:class => "btn btn-default btn-left-margin"}

@@ -1,0 +1,16 @@
+.row
+  .col-md-3
+  .col-md-6
+    .auth-form-header.text-center
+      = t(".title")
+    .auth-form-body
+      %p
+        %i.glyphicon.glyphicon-remove
+        = t(".notice")
+      %p
+        %i.glyphicon.glyphicon-remove
+        = t(".try")
+      
+      = link_to t(".again"), "/users/password/new",  {:class => "btn btn-primary"}
+
+

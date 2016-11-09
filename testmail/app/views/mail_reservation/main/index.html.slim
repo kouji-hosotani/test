@@ -1,0 +1,101 @@
+.main
+  .row
+    .col-md-5
+      h4 メール送信予約
+    .col-md-7.text-right
+      button#js-reserve-modal-button.btn.btn-success 予約作成
+
+
+  .row.content-main.col-md-12
+    = form_tag("", id: "js-reserve-form", method: "POST") do
+      .row.content-main__element
+        .col-md-5.content-main__element-template
+          .row
+            .col-md-3
+              label タイトル
+            .col-md-9
+              = text_area_tag "job_name", "", class: "form-control"
+          .row
+            .col-md-3
+              label 予約送信日時
+            .col-md-9
+              .datepicker
+                input.datepicker_reserve type="text" name="reserve-date"
+                = select_tag "js-hour", options_for_select(SendTimeZone.pluck(:display_name)), class: "form-control"
+          .row
+            .col-md-3
+              label 送信元表示名
+            .col-md-9
+              = text_area_tag "js-template-sender", @default_sender, class: "form-control"
+          .row
+            .col-md-3
+              label メール件名
+            .col-md-8
+              = text_area_tag "js-template-subject", "", class: "form-control"
+            .col-md-1
+              = select_tag "js-temp", options_for_select(@template_datas), class: "form-control"
+          .row
+            .col-md-3
+              label 本文
+            .col-md-9
+              = text_area_tag "js-template-message", "", class: "form-control", rows: "20"
+          .row
+            .col-md-3
+              label 添付ファイル名
+            .col-md-9
+              = text_area_tag "js-template-filename", "", class: "form-control"
+        .col-md-7
+          #staff-area
+            table.table.table-hover.staff-scroll
+              thead
+                tr
+                  th
+                    = check_box 'all', 1, class: "js-all-check"
+                  - if !Profile.where(user_id: current_user.id).first.blank? and Profile.where(user_id: current_user.id).first.company_id == 1
+                    th 会社名
+                  th メールアドレス
+                  th 名前
+                  th 部署・部門名
+                  th 課名
+                  th 拠点
+                  th 役職
+              tbody
+                - if @staff_datas.blank?
+                  tr
+                    td.text-center colspan=8 データがありません
+                - else
+                  - @staff_datas.each do |data|
+                    tr
+                      td
+                        = check_box 'reserve', data.id, class: "js-rs-check"
+                      - if !Profile.where(user_id: current_user.id).first.blank? and Profile.where(user_id: current_user.id).first.company_id == 1
+                        td
+                          = data.company.name_ja
+                      td
+                        = data.email
+                      td
+                        = data.create_name
+                      td
+                        = data.unit
+                      td
+                        = data.department
+                      td
+                        = data.region
+                      td
+                        = data.post
+
+  #js-reserve-modal.modal.fade aria-hidden="true" aria-labelledby="reserveModalLabel" role="dialog" tabindex="-1"
+    .modal-dialog
+      .modal-content
+        .modal-header
+          h5 送信予約
+          .modal-body
+            #js-rs-title
+            #js-rs-time
+            #js-rs-sender
+            #js-rs-subject
+            #js-rs-staff
+            #js-rs-message 上記内容で予約します。よろしいですか？
+          .modal-footer
+            button#js-reserve-button.btn.btn-primary type="button" 送信予約
+            button.btn.btn-default type="button" data-dismiss="modal" キャンセル

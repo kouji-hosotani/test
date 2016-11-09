@@ -1,0 +1,61 @@
+%header
+  /google font
+  %link{:rel => :stylesheet, :type => :"text/css", :href => "https://fonts.googleapis.com/css?family=Orbitron:400,500,700,900"}
+  .navbar.navbar-default.navbar-fixed-top
+    .container-fluid
+      .navbar-header
+        %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        - if controller_name != "help"
+          %a.navbar-brand{:href => "/"}
+            = image_tag "logos/newton_logo.png", :class => "logo"
+        - else
+          = image_tag "logos/newton_logo.png", :class => "logo"
+
+      .navbar-collapse.collapse
+        %ul.nav.navbar-nav
+          - if controller_name != "help"
+            - if current_user.present?
+              %li
+                %a{:href => "/mail_history"} 送信メール一覧
+              %li
+                %a{:href => "/mail_template"} メール作成
+              %li
+                %a{:href => "/staff_register"} 送信先登録
+
+        -# Settings
+        -# userauth(devise)
+        - if controller_name != "help"
+          %ul.nav.navbar-nav.navbar-right.settings
+            %li.dropdown
+              %a.dropdown-toggle.settings{"data-toggle" => "dropdown", :href => "#"}
+                = image_tag "settings.png", :class => "icon_settings"
+                %b.caret
+              %ul.dropdown-menu
+                %li.active
+                  %a{:href => "#"} Profile
+                %li
+                  %a{:href => "#"}
+                    - if user_signed_in?
+                      Logged in as
+                      = succeed "." do
+                        %strong= current_user.email
+                      = link_to 'Edit SMTP', management_smtpinfo_path, :class => 'navbar-link'
+                      = link_to 'Edit password', edit_user_registration_path, :class => 'navbar-link'
+                      = link_to 'Edit profile', "/users/profile/edit", :class => 'navbar-link'
+
+                      \#{link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'}
+
+                    - else
+                      = link_to "Sign up", "/users/sign_up/interim", :class => 'navbar-link'
+                      \#{link_to "Login", new_user_session_path, :class => 'navbar-link'}
+
+        -# Help
+        %ul.nav.navbar-nav.navbar-right
+          -# if controller_name == "top"
+            %li
+              %a#jsHelp{:href => "/help"} ヘルプ
+
+        -# userauth(devise)

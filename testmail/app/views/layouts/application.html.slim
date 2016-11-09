@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title testmail
+    = include_gon
+    = javascript_include_tag 'lib/html5.js'
+    = stylesheet_link_tag    'application', media: 'all'
+
+    - if @js_css_root.present?
+      - if Dir.glob("#{Rails.root}/app/assets/stylesheets/#{@js_css_root}.*").count > 0
+        = stylesheet_link_tag @js_css_root, media: "all"
+
+
+    = javascript_include_tag 'application'
+    = javascript_include_tag "lib/d3.v3.min.js"
+
+    - if @js_css_root.present?
+      - if Dir.glob("#{Rails.root}/app/assets/javascripts/#{@js_css_root}.*").count > 0
+        = javascript_include_tag @js_css_root
+
+    = csrf_meta_tags
+    = favicon_link_tag(source="favicon.ico")
+
+    /prevent double top zoom on tablet
+    meta name="viewport" content="user-scalable = no"
+
+  body
+    = render 'shared/header'
+    .container-fluid
+      == yield
+    = render 'shared/footer'

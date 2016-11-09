@@ -1,0 +1,66 @@
+.main
+  h4 送信メール一覧
+
+  .row
+    .col-md-4
+      #search-box
+        = form_tag(mail_history_get_filter_data_url, :remote => true, :id => "history_filter_form", :class => "contents-search") do
+          = text_field_tag :search_word, nil, :placeholder => "検索", :class => "form-control"
+    .col-md-8.contents-button
+      ul.text-right
+        li
+          = link_to "送信予約", mail_reservation_url, class: "btn btn-success"
+
+  .row
+    .col-md-12
+      div style="text-align:right;"
+        = paginate @mail_datas
+
+  .row
+    .col-md-12.csv-sheet
+      table.table.table-condensed.table-hover.table-striped
+        thead
+          tr
+            th No
+            th タイトル
+            th メール件名
+            th 予約送信日付
+            th 予約時間帯
+            th 送信日時
+            th 送信者数
+            th 作成日時
+            th
+        tbody#js-history-tbody
+          - @mail_datas.each_with_index do |data, count|
+            tr
+              td
+                - if @page.blank?
+                  = count + 1
+                - else
+                  = count + 1 + (@page.to_i - 1 ) * 10
+              td
+                = data.job_name
+              td
+                - if data.send_mail.present?
+                  = data.send_mail.subject
+                - else
+                  = data.mail_template.subject
+              td
+                = data.reserved_date
+              td
+                = data.send_time_zone.display_name
+              td
+                = data.send_at
+              td.text-right
+                = SendMember.where(mail_reservation_id: data.id, send_status_id: 2).count.to_s  + "/" + SendMember.where(mail_reservation_id: data.id).count.to_s
+              td
+                = data.created_at
+              td
+                = link_to "詳細", open_report_url(data.id), class: "btn btn-success"
+                - if data.send_at.blank?
+                  '
+                  = link_to "取消", mail_history_reserve_path(data.id), class: "btn btn-success", :method => :delete, :data => {:confirm => "タイトル「#{data.job_name}」を取消してよろしいでしょうか？"}
+  .row
+    .col-md-12
+      div style="text-align:right;"
+        = paginate @mail_datas

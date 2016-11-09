@@ -1,0 +1,31 @@
+%div.row
+  %div.col-md-3
+  %div.col-md-6
+    %div.auth-form-header.text-center
+      Login
+    %div.auth-form-body.form-group
+      = form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:name => "loginForm"}) do |f|
+
+        %div
+          = f.label :email
+          %br/
+          = f.email_field :email, autofocus: true , :class => "input-block-lg"
+        %div
+          = f.label :password
+          %br/
+          = f.password_field :password, autocomplete: "off" , :class => "input-block-lg"
+        
+        - flash.each do |name, msg|
+          - if msg.is_a?(String)
+            %div{:id => "flash_#{name}", :style => "color:red;"}
+              = msg
+
+        - if devise_mapping.rememberable?
+          %div
+            = f.check_box :remember_me
+            = f.label :remember_me
+        -# %div= f.submit "Log in"
+        %a.btn.btn-primary.js-btn-submit
+          = "Login"           
+    = render "users/shared/links"
+  %div.col-md-3

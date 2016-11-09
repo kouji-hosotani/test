@@ -1,0 +1,132 @@
+.main
+  h4 メール作成
+
+  .row
+    .col-md-4
+      #search-box
+        = form_tag(mail_template_get_filter_data_url, :remote => true, :id => "template_filter_form", :class => "contents-search") do
+          = text_field_tag :search_word, nil, :placeholder => "検索", :class => "form-control"
+    .col-md-8.contents-button
+      ul.text-right
+        li
+          button#js-disp-modal.btn.btn-success 新規作成
+
+  .row
+    .col-md-12.csv-sheet
+      table.table.table-condensed.table-hover.table-striped
+        thead
+          tr
+            th No
+            th メール件名
+            th.text-center URL型
+            th.text-center 添付型
+            th 更新日時
+            th
+        tbody#js-template-tbody
+          - if @template_datas.blank?
+            tr
+              td.text-center colspan=7 データがありません
+          - else
+            - @template_datas.each_with_index do |data, count|
+              tr
+                td
+                  - if @page.blank?
+                    = count + 1
+                  - else
+                    = count + 1 + (@page.to_i - 1 ) * 10
+                td
+                  = data.subject
+                td.text-center
+                  = data.link_flag ? "<span class='glyphicon glyphicon-ok' aria-hidden='true' style='color: red'></span>".html_safe : "<span class='glyphicon glyphicon-minus' aria-hidden='true' style='color: blue'></span>".html_safe
+                td.text-center
+                  = data.attach_flag ? "<span class='glyphicon glyphicon-ok' aria-hidden='true' style='color: red'></span>".html_safe : "<span class='glyphicon glyphicon-minus' aria-hidden='true' style='color: blue'></span>".html_safe
+                td
+                  = data.updated_at.strftime("%Y/%m/%d %H:%M:%S")
+                td.text-right
+                  = link_to "送信予約", mail_reservation_url(id: data.id), class: "btn btn-success"
+                  '
+                  = link_to "編集", "#", class: "js-template-update btn btn-success", value: data.id
+                  '
+                  = link_to "削除", data, class: "btn btn-success", method: :delete, data: {confirm: "削除します。よろしいですか？"}
+
+#js-template-modal.modal.fade aria-hidden="true" aria-labelledby="remoteModalLabel" role="dialog" tabindex="-1"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h4.modal-title 新規作成
+      .modal-body
+        = form_tag("", id: "js-template-form", :multipart => true ) do
+          .row
+            label.col-md-3 メール件名
+            .col-md-9
+              input#js-template-title.form-control type="text" name="title"
+          .row
+            label.col-md-3 本文
+            .col-md-9
+              textarea#js-template-message.form-control rows="10" name="message"
+          .row
+            label.col-md-3 タイプ
+            .col-md-9
+              table
+                tbody
+                  tr
+                    td
+                      = check_box 'tra_type' ,'link'
+                    td URL型
+                  tr
+                    td
+                      = check_box 'tra_type' ,'file'
+                    td 添付型
+                    td
+                      = select_tag "js-at-type", options_for_select(@attached_types), class: "form-control"
+
+          .row
+            label.col-md-3 添付ファイル名
+            .col-md-9
+              /= file_field :file, :csv, multiple: false, name: "attachment_file"
+              input#js-template-filename.form-control type="text" name="filename"
+
+        .modal-footer
+          button#js-add-button.btn.btn-primary type="button" 登録
+          button.btn.btn-default type="button" data-dismiss="modal" 閉じる
+
+#js-template-update-modal.modal.fade aria-hidden="true" aria-labelledby="remoteModalLabel" role="dialog" tabindex="-1"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h4.modal-title 編集
+      .modal-body
+        = form_tag("", id: "js-template-update-form", method: "PATCH") do
+          .row
+            label.col-md-3 メール件名
+            .col-md-9
+              input#js-template-update-title.form-control type="text" name="title"
+          .row
+            label.col-md-3 本文
+            .col-md-9
+              textarea#js-template-update-message.form-control rows="10" name="message"
+          .row
+            label.col-md-3 タイプ
+            .col-md-9
+              table
+                tbody
+                  tr
+                    td
+                      = check_box 'update_tra_type' ,'link'
+                    td URL型
+                  tr
+                    td
+                      = check_box 'update_tra_type' ,'file'
+                    td 添付型
+                    td
+                      = select_tag "js-update-at-type", options_for_select(@attached_types), class: "form-control"
+
+          .row
+            label.col-md-3 添付ファイル名
+            .col-md-9
+              /= file_field :file, :csv, multiple: false, name: "attachment_file"
+              input#js-template-update-filename.form-control type="text" name="filename"
+
+      .modal-footer
+        button#js-update-button.btn.btn-primary type="button" 更新
+        button.btn.btn-default type="button" data-dismiss="modal" 閉じる

@@ -1,0 +1,131 @@
+.main
+  .row
+    .col-md-4
+      h4 ステータス確認
+
+  .row
+    .col-md-4
+      '予約送信日時
+      = @reserve_data.reserved_date
+      '
+      = @reserve_data.send_time_zone.display_name
+    .col-md-8
+      'タイトル：
+      = @reserve_data.job_name
+
+  .row
+    .col-md-4
+      #search-box
+        = form_tag(open_report_get_filter_data_url(@reserve_data.id), :remote => true, :id => "report_filter_form", :class => "contents-search") do
+          = text_field_tag :search_word, nil, :placeholder => "検索", :class => "form-control"
+    .col-md-4
+    .col-md-4.contents-button
+      ul.text-right
+        li
+          button#js-sended-mail.btn.btn-success data-target="#js-sended-mail-modal" メール内容表示
+        li
+          = link_to "CSVダウンロード", open_report_export_url(@reserve_data.id), class: "btn btn-success"
+
+  .row
+    .col-md-12.csv-sheet
+      table.table.table-hover
+        thead
+          tr
+            th No
+            th メールアドレス
+            th 名前
+            th 部署・部門名
+            th 課名
+            th 拠点
+            th 役職
+            th 送信状態
+            th メール開封状況
+            th メール開封時間
+
+            - if @template.link_flag
+              th リンククリック状況
+              th リンククリック時間
+
+            - if @template.attach_flag
+              th 添付ファイル開封状況
+              th 添付ファイル開封時間
+
+        tbody#js-report-tbody
+          - @member_datas.each_with_index do |data, count|
+            tr
+              td
+                - if @page.blank?
+                  = count + 1
+                - else
+                  = count + 1 + (@page.to_i - 1 ) * 10
+              td
+                = data.staff.email
+              td
+                = data.staff.create_name
+              td
+                = data.staff.unit
+              td
+                = data.staff.department
+              td
+                = data.staff.region
+              td
+                = data.staff.post
+              td
+                = data.send_status.name_ja
+              td
+                = OpenStatus.find(data.open_flag).name_ja
+              td
+                = data.opened_at.strftime("%Y/%m/%d %H:%M:%S") if data.opened_at.present?
+              - if @template.link_flag
+                td
+                  = OpenStatus.find(data.click_flag).name_ja
+                td
+                  = data.clicked_at.strftime("%Y/%m/%d %H:%M:%S") if data.clicked_at.present?
+              - if @template.attach_flag
+                td
+                  = OpenStatus.find(data.file_open_flag).name_ja
+                td
+                  = data.file_opened_at.strftime("%Y/%m/%d %H:%M:%S") if data.file_opened_at.present?
+
+#js-sended-mail-modal.modal.fade aria-hidden="true" aria-labelledby="remoteModalLabel" role="dialog" tabindex="-1"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h4.modal-title メール内容詳細
+      .modal-body
+        .row
+          label.col-md-2 送信元表示名
+          .col-md-10
+            input.form-control type="text" name="from_name" disabled=true value=@template.from_name
+        .row
+          label.col-md-2 タイトル
+          .col-md-10
+            input.form-control type="text" name="title" disabled=true value=@template.subject
+        .row
+          label.col-md-2 本文
+          .col-md-10
+            textarea.form-control rows="15" name="message" disabled=true #{@template.message}
+        .row
+          label.col-md-2 タイプ
+          .col-md-10
+            table
+              tbody
+                tr
+                  td
+                    = check_box 'tra_type' ,'link', {:disabled => true, :checked => @template.link_flag}
+                  td URL型
+                tr
+                  td
+                    = check_box 'tra_type' ,'file', {:disabled => true, :checked => @template.attach_flag}
+                  td 添付型
+                  - if @template.attach_flag
+                    td
+                      = select_tag "js-at-type", options_for_select(@attached_types, @template.attached_type_id), disabled: true, class: "form-control"
+        .row
+          label.col-md-2 添付ファイル名
+          .col-md-10
+            input.form-control type="text" name="file_name" disabled=true value=@template.file_name
+
+      .modal-footer
+
+        button.btn.btn-default type="button" data-dismiss="modal" 閉じる

@@ -1,0 +1,66 @@
+
+.modal-header Contact form
+.modal-body
+  = form_for @contact, :url => {:action => 'create'}, :html => {:class => 'form-horizontal' }  do |f| 
+    %div
+      = f.label :name
+      %br/
+      = f.text_field :name, autofocus: true , :class => "input-block-lg"
+      %span.help-block#name-error
+    %div
+      = f.label :email
+      %br/
+      = f.email_field :email, :class => "input-block-lg"
+      %span.help-block#email-error
+    %div
+      = f.label :message
+      %br/
+      = f.text_area :message, autocomplete: "off" , :class => "input-block-lg"
+      %span.help-block#message-error
+    %br
+    = f.button "Send message", :id => "send-button", :class=> "btn btn-primary"
+    %span.help-block#send-message
+
+.modal-footer
+  %button{:type => "button", :class => "btn btn-primary", "data-dismiss" => "modal"}閉じる
+
+
+
+:javascript
+  $('.form-horizontal').submit(function(event) {
+    event.preventDefault();
+    var $form = $(this);
+
+    $.ajax({
+      url: $form.attr('action'),
+      type: $form.attr('method'),
+      data: $form.serialize(),
+
+      beforeSend: function(xhr, settings) {
+        $("#send-message").html("");
+        $("#name-error").html("");
+        $("#email-error").html("");
+        $("#message-error").html("");
+      },
+
+      success: function(result, textStatus, xhr) {
+        if (result["status"] == 1) {
+          $("#send-message").html(result["message"]);
+          $("#send-button").attr('disabled', true);
+        }
+        else if (result["status"] == -1) {
+          $("#send-message").html(result["message"]);
+        }
+        else {
+          errors = result["errors"]
+          if ('name' in errors) $("#name-error").html(errors["name"]);
+          if ('email' in errors) $("#email-error").html(errors["email"]);
+          if ('message' in errors) $("#message-error").html(errors["message"]);
+        }
+      },
+
+      error: function(xhr, textStatus, error) {
+        alert(error);
+      }
+    });
+  });

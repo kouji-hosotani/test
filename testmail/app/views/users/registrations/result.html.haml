@@ -1,0 +1,12 @@
+.row
+  .col-md-3
+  .col-md-6
+    .auth-form-header.text-center
+      = t(".title")
+    .auth-form-body
+      %p
+        %i.glyphicon.glyphicon-ok
+        = t(".notice")
+
+      = link_to t(".to_login"), "/",  {:class => "btn btn-primary js-btn-submit"}
+

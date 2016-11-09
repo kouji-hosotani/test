@@ -1,0 +1,16 @@
+%main
+  
+  / List Group
+  %div.row.content-list
+    %div.col-lg-12
+      %div.list-group
+        %form.form-inline{:action => "/download/uupv", :method => "post"}
+          .form-group
+            %label{:for => "exampleInputName2"} Name
+            %input#startDate.form-control{:name => "start_date", :type => "date"}
+          .form-group
+            %label{:for => "exampleInputEmail2"} Email
+            %input#endDate.form-control{:name => "end_date", :type => "date"}
+          %br
+          .form-group
+            %button.btn.btn-info{:type => "submit"} Send invitation

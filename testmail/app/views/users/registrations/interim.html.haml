@@ -1,0 +1,21 @@
+.row
+  .col-md-3
+  .col-md-6
+    .auth-form-header.text-center
+      = t(".title")
+    .auth-form-body    
+      = form_for @ticket, :url => {:action => :interim_create}, :html => {:name => "emailForm"} do |f|
+        .form-group{:class => @errors.key?(:email) ? "has-error" : "" }
+          = f.label t(".email"), {:class => "control-label"}
+          = f.email_field :email, autofocus: true, :class => "form-control"
+          - if @errors.key?(:email)
+            %p{:class => "control-label"}= @errors[:email]
+
+        .form-group{:class => @errors.key?(:email_confirm) ? "has-error" : "" }
+          = f.label t(".email_address_again"), {:class => "control-label"}
+          = text_field :email, :confirm, :class => "form-control"
+          - if @errors.key?(:email_confirm)
+            %p{:class => "control-label"}= @errors[:email_confirm]
+
+        %br/
+        = link_to t(".send_conﬁrmation_email"), "javascript:void(0)",  {:class => "btn btn-primary js-btn-submit"}

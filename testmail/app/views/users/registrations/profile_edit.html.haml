@@ -1,0 +1,37 @@
+.row
+  .col-md-3
+  .col-md-6
+    .auth-form-header.text-center
+      = t(".title")
+    .auth-form-body
+      = form_for @profile, :url => {:action => :profile_update}, :html => {:name => "emailForm", :method => "put"} do |f|
+
+        .form-group{:class => (@errors.key?(:name) or @errors.key?(:name2)) ? "has-error" : "" }
+          = f.label t(".name"), {:class => "control-label"}
+          .row
+            .col-md-6
+              = f.text_field :name, autofocus: true, :class => "form-control", :value => @profile[:name_sei].present? ? @profile[:name_sei] : ""
+              - if @errors.key?(:name)
+                %p{:class => "control-label"}= @errors[:name]
+            .col-md-6
+              = f.text_field :name2, autofocus: true, :class => "form-control", :value => @profile[:name_mei].present? ? @profile[:name_mei] : ""
+              - if @errors.key?(:name2)
+                %p{:class => "control-label"}= @errors[:name2]
+
+        .form-group{:class => (@errors.key?(:name_read) or @errors.key?(:name_read2)) ? "has-error" : "" }
+          = f.label t(".name_read"), {:class => "control-label"}
+          .row
+            .col-md-6
+              = f.text_field :name_read, :class => "form-control", :value => @profile[:name_sei_read].present? ? @profile[:name_sei_read] : ""
+              - if @errors.key?(:name_read)
+                %p{:class => "control-label"}= @errors[:name_read]
+            .col-md-6
+              = f.text_field :name_read2, :class => "form-control", :value => @profile[:name_mei_read].present? ? @profile[:name_mei_read] : ""
+              - if @errors.key?(:name_read2)
+                %p{:class => "control-label"}= @errors[:name_read2]
+
+
+
+        %button{:type => "submit", :id => "jsRegisterdSubmit", :class => "btn btn-primary js-btn-submit"}
+          = "更新"
+        = link_to "閉じる", :back, {:class => "btn btn-default btn-left-margin"}

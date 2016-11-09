@@ -1,0 +1,34 @@
+.row
+  .col-md-3
+  .col-md-6
+    .auth-form-header.text-center
+      = t(".title")
+    .auth-form-body
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+
+        = f.hidden_field :email, {:value => current_user.email}
+        .form-group{:class => devise_errors.key?(:password) ? "has-error" : "" }
+          = f.label t(".password"), {:class => "control-label"}
+          %br
+          = f.password_field :password, autocomplete: "off", :class => "form-control"
+          -if devise_errors[:password].count > 0
+            %p{:class => "control-label"}= t(".password") + devise_errors[:password][0]
+
+        .form-group{:class => devise_errors.key?(:password_confirmation) ? "has-error" : "" }
+          = f.label t(".password_confirmation"), {:class => "control-label"}
+          %br
+          = f.password_field :password_confirmation, autocomplete: "off", :class => "form-control"
+          - if devise_errors[:password_confirmation].count > 0
+            %p{:class => "control-label"}= t(".password_confirmation") +  devise_errors[:password_confirmation][0]
+
+        .form-group{:class => devise_errors.key?(:current_password) ? "has-error" : "" }
+          = f.label t(".current_password"), {:class => "control-label"}
+          %br
+          = f.password_field :current_password, autocomplete: "off", :class => "form-control"
+          - if devise_errors[:current_password].count > 0
+            %p{:class => "control-label"}= t(".current_password") + devise_errors[:current_password][0]
+
+        = link_to "更新", "javascript:void(0)", {:id => "jsRegisterdSubmit", :class => "btn btn-primary js-btn-submit"}
+        = link_to "閉じる", :back, {:class => "btn btn-default btn-left-margin"}
+
+      -#Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}

@@ -1,0 +1,8 @@
+#error
+  %h1 403 forbidden
+  %div.alert.alert-danger
+    - case @exception
+    - when ApplicationController::IpAddressRejected
+      "Your ipaddress(#{request.ip}) does not allow"
+    - else
+      "Request Url does not exist!"

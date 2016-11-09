@@ -1,0 +1,90 @@
+%main
+  
+  / List Group
+  %div.row.content-list
+    %div.col-lg-12
+      %div.list-group
+        %a.col-md-6.col-lg-6.top-list-odd{:href => "/register_route", :class => "list-group-item top-list-group-item", "data-no-turbolink" => "1"}
+          %h5.list-group-item-heading
+            登録経路
+          %p.top-list-group-item-text
+            ユーザ登録経路を表示
+          %span
+            %span.btn.btn-success.btn-right  レポートを見る
+            //= image_tag "line_graph.png", :class => "icon_graph"
+
+        %a.col-md-6.col-lg-6.top-list-even{:href => "/usage_distribution", :class => "list-group-item top-list-group-item", "data-no-turbolink" => "1"}
+          %h5.list-group-item-heading
+            利用回数分布
+          %p.top-list-group-item-text
+            ユーザ別・リワード登録利用回数分布
+          %span.btn.btn-warning.btn-right  レポートを見る
+          //= image_tag "trulia_trend.png" , :class => "icon_graph"
+
+        %a.col-md-6.col-lg-6.top-list-odd{:href => "/retention_rate", :class => "list-group-item top-list-group-item"}
+          %h5.list-group-item-heading
+            定着率
+          %p.top-list-group-item-text
+            ユーザ定着率を可視化
+          %span.btn.btn-violet.btn-right{:style => "background-color:#9b59b6; color: #FFFFFF"}  レポートを見る
+          //= image_tag "media_path_analysis/logo.png" , :class => "icon_graph"
+        
+        %a.col-md-6.col-lg-6.top-list-even{:href => "/customer_journey", :class => "list-group-item top-list-group-item", "data-no-turbolink" => "1"}
+          %h5.list-group-item-heading
+            ユーザ回遊（カスタマージャーニー）
+          %p.top-list-group-item-text
+            コンバージョンまでのユーザ回遊を可視化
+          %span.btn.btn-primary.btn-right  レポートを見る
+          //= image_tag "trulia_trend.png" , :class => "icon_graph"
+                                     
+  / news and history
+  %div.row
+  
+    / news
+    -#%div{:class => current_user.profile.auth_type_id == 1 ? "col-lg-6" : "col-lg-12"}
+    %div{:class => "col-lg-12"}
+      %div.bs-component
+        %div.panel.panel-default
+          %div.panel-heading
+            %h3.panel-title お知らせ
+          %div.panel-body.padding-zero
+            %table.table.table-striped.table-hover
+              %thread
+              %tbody
+                - if @informations.present?
+                  - @informations.each do |value|
+                    %tr
+                      %td #{value.title}
+                      %td #{simple_format(truncate(value.description, :length => 50))}
+                      %td #{value.information_type.name}
+                      %td #{value.updated_at.strftime("%Y/%m/%d %H:%M")}     
+                - else
+                  %tr
+                    %td 現在お知らせはありません。                       
+    - if current_user.profile.auth_type_id == 1
+      / history
+      -#%div.col-lg-6
+        %div.bs-component
+          %div.panel.panel-default
+            %div.panel-heading
+              %h3.panel-title 履歴
+            %div.panel-body.padding-zero
+              %table.table.table-striped.table-hover
+                %thread
+                  -#%tr
+                    %td タイトル
+                    %td 内容
+                    %td 種別
+                    %td 更新日時
+                %tbody
+                  - if @logs.present?
+                    - @logs.each do |value|
+                      %tr
+                        %td #{@users[value.user_id]}
+                        %td #{value.controller}/#{value.action}
+                        %td #{value.ip}
+                        %td #{value.created_at.strftime("%Y/%m/%d %H:%M")}
+                  - else
+                    %tr
+                      %td 現在履歴はありません。     
+                          
