@@ -1,0 +1,25 @@
+ja:
+  devise:
+    sessions:
+      new:
+        user_id: "ユーザID"
+        password: "パスワード"
+        remember_me: "ログイン状態を保持する"
+    registrations:
+      new:
+        user_name: "ユーザ名"
+        user_id: "ユーザID"
+        password: "パスワード"
+        password_confirmation: "パスワード(再入力)"
+      edit:
+        edit: "登録情報の修正"
+        user_name: "ユーザ名"
+        user_id: "ユーザID"
+        password: "変更後のパスワード"
+        leave_blank_if_you_dont_want_to_change_it: "(変更の必要がなければ，空にしておいて下さい。)"
+        password_confirmation: "確認のためもう一度パスワードを入力して下さい。"
+        current_password: "現在のパスワード"
+        we_need_your_current_password_to_confirm_your_changes: "(認証のため現在のパスワードを入力して下さい。)"
+        remove_account: "アカウントを削除"
+        confirm: "本当によろしいですか？"
+        back: "戻る"

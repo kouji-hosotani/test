@@ -1,0 +1,525 @@
+ja:
+  mail_error: "タイトルと本文を入力して下さい。"
+  users:
+    error:
+      system_error: "システムエラーです。"
+    passwords:
+      new:
+        title: パスワードリセット
+        email: メールアドレス
+        email_address_again: メールアドレス確認
+        send_conﬁrmation_email: メールアドレス送信
+      create:
+        error:
+          email_address_format_is_incorrect: メールアドレスを正しく入力して下さい
+          enter_email_address: メールアドレスを入力して下さい
+          notsame_email: メールアドレスが一致しません
+          invalid_email_domain: "登録可能なメールアドレスのドメインは、%{domain} です"
+          not_found_email: 入力されたメールアドレスは存在しません
+      result:
+        title: メールアドレス登録完了！
+        update_email_link_click_on_notification_email: "メールアドレス変更の案内メールを下記のメールアドレスへ送りました。 メールに記載されているリンクをクリックすると、会員情報入力のステップへ進みます。"
+        password_reset_email_link_click_on_notification_email: "パスワード再設定の案内メールを下記のメールアドレスへ送りました。\n メールに記載されているリンクをクリックすると、新しいパスワード入力のステップへ進みます。"
+      edit:
+        title: パスワード更新
+        password: 新しいパスワード
+        password_confirmation: 新しいパスワード（再入力）
+        update_password: パスワード更新
+      update:
+        error:
+          password_between_8_to_16: パスワードは８〜１６文字で入力して下さい
+          enter_password: パスワードを入力して下さい
+          notsame_password: パスワードが一致しません
+      update_result:
+        title: パスワードを更新しました！
+        notice: ログインページより、ログインしご利用いただけます。
+        to_login: ログインページへ
+      error:
+        ticket_expire:
+          title: 有効期限が切れています
+          notice: ご指定のメールアドレスへお送りした｢パスワードリセットのご案内｣メールの有効期限が切れている可能性があります。
+          try: 下記のボタンをクリックして再度メールアドレスの登録をお願いします。
+          again: 再度メールアドレスを入力
+
+    sessions:
+      create:
+        error:
+          expired: 有効期限が切れています。
+          invalid: 正しいメールアドレス パスワードを入力して下さい。
+    registrations:
+      interim:
+        #title: メールアドレス登録
+        title: Sign Up
+        email: メールアドレス
+        email_address_again: メールアドレス確認
+        send_conﬁrmation_email: 登録する
+      interim_create:
+        error:
+          email_address_format_is_incorrect: メールアドレスを正しく入力して下さい
+          enter_email_address: メールアドレスを入力して下さい
+          notsame_email: メールアドレスが一致しません
+          invalid_email_domain: "登録可能なメールアドレスのドメインは、%{domain} です"
+          duplicate_email: 入力されたメールアドレスは既に存在します
+      interim_result:
+        title: メールアドレス登録完了！
+        update_email_link_click_on_notification_email: "メールアドレス変更の案内メールを下記のメールアドレスへ送りました。 メールに記載されているリンクをクリックすると、会員情報入力のステップへ進みます。"
+        email_8_hours_expiration: "お送りする案内メールのリンクを8時間以内にクリックしない場合、仮登録データが自動で削除されます。"
+      new:
+        title: 会員登録
+        name: 名前
+        name_read: ふりがな
+        unit: "所属（チーム名）"
+        password: パスワード
+        password_confirmation: パスワード確認
+        terms: 利用規約
+        tems_att: "（最下部にチェックボックスがあります）"
+        register: 登録する
+        station_modal_title: "新規追加"
+        station_ja: "部署名"
+        station_en: "部署名"
+        unit_modal_title: "新規追加"
+        unit_ja: "チーム名"
+        unit_en: "チーム名"
+        create: "登録する"
+        cancel: "キャンセル"
+      create:
+        error:
+          password_between_8_to_16: パスワードは８〜１６文字で入力して下さい
+          enter_password: パスワードを入力して下さい
+          notsame_password: パスワードが一致しません
+          enter_name: 名前を入力して下さい
+          enter_name_read: ふりがなを入力して下さい
+          enter_unit: 所属（チーム名）を入力して下さい
+          enter_station: 所属（部署）を入力して下さい
+      result:
+        title: 登録完了しました！
+        notice: ログインページより、ログインしご利用いただけます。
+        to_login: ログインページへ
+      edit:
+        title: パスワード変更
+        password: 新しいパスワード
+        password_confirmation: 新しいパスワード（再入力）
+        current_password: 現在のパスワード
+      profile_edit:
+        title: 登録情報の変更
+        name: 名前
+        name_read: ふりがな
+        unit: "所属（部署・チーム名）"
+        update: 更新する
+        unit_modal_title: "新規追加"
+        unit_ja: "チーム名"
+        unit_en: "チーム名"
+        station_modal_title: "新規追加"
+        station_ja: "部署名"
+        station_en: "部署名"
+        create: "登録する"
+        cancel: "キャンセル"
+      profile_update:
+        error:
+          enter_name: 名前を入力して下さい
+          enter_name_read: ふりがなを入力して下さい
+          enter_unit: 所属（チーム名）を入力して下さい
+          enter_station: 所属（部署）を入力して下さい
+      station_create:
+        error:
+          enter_station: "部署名を入力して下さい。"
+          duplicate_station: "既に使用されています。"
+      unit_create:
+        error:
+          enter_unit: "チーム名を入力して下さい。"
+          duplicate_unit: "既に使用されています。"
+      layouts:
+        terms:
+          title: 利用規約
+          notice1: "《重要》 データ利用上の遵守事項"
+          notice2: "本データは株式会社KDDIと株式会社Medibaとの利用契約に基づいてデータの活用が認められております。"
+          notice3: "以下の遵守事項をよくお読みいただきご利用いただきますようお願いいたします。"
+          notice4: "◆利用前提"
+          notice5: "KDDI社のデータ販売機会の喪失に繋がる行為は行わない。"
+          notice6: "◆データの利用目的"
+          notice7: "広告業務及びそれに付随する業務（コンサルティング業務、データ分析業務等を含む）にのみ利用する。"
+          notice8: " ◆データの取り扱い"
+          notice9: "データのみの定期的な提供及び再販売（無料提供含む）は行わない。"
+          notice10: "また、提供したデータを第三者から他の第三者に開示させない。"
+          notice11: "◆データの開示範囲"
+          notice12: "市場調査会社、コンサルティング会社、他の広告代理店への開示は不可。"
+          notice13: "□本データの利用に際しては上記を遵守することを承諾いたします。"
+          terms_agree: この利用規約に同意します。
+
+      error:
+        ticket_expire:
+          title: 有効期限が切れています
+          notice: ご指定のメールアドレスへお送りした｢会員登録のご案内｣メールの有効期限が切れている可能性があります。
+          try: 下記のボタンをクリックして再度メールアドレスの登録をお願いします。
+          again: 再度メールアドレスを登録
+
+  notice_mailer:
+    sendmail_confirm:
+      subject: 【Tuna】会員登録のご案内
+      text1: Tunaご利用希望の方にお送りしております。
+      text1_2: -------------------------------------------------------
+      title: Tuna ユーザ登録のご案内
+      text2: 下記の URL リンクをクリックしてアカウント作成手続きを続けてください。
+      text3: なお、この URL は送信日時から8時間有効となっています。
+      text4: ※ 上記 URL リンクをクリックしてもリンク先に移動しない場合は、
+      text5: URL をコピーしてブラウザのアドレス入力欄に貼り付けてください。
+      text6: ※ 発信専用の自動送信メールにつき、このメールに返信はしないでください。
+      text7: ※ このメールに心当たりがない場合は、上記 URL リンクをクリックしないで
+      text8: メールを削除してください。クリックして アカウント作成を
+      text9: 完了しない限り、アカウントは作成されません。
+
+    sendmail_password_reset:
+      subject: 【tuna】パスワードリセットのご案内
+      text1: Tunaご利用希望の方にお送りしております
+      text1_2: -------------------------------------------------------
+      title: Tuna パスワードリセットのご案内
+      text2: 下記の URL リンクをクリックして新しいパスワードの登録を続けてください。
+      text3: なお、この URL は送信日時から8時間有効となっています。
+      text4: ※ 上記 URL リンクをクリックしてもリンク先に移動しない場合は、
+      text5: URL をコピーしてブラウザのアドレス入力欄に貼り付けてください。
+      text6: ※ 発信専用の自動送信メールにつき、このメールに返信はしないでください。
+      text7: ※ このメールに心当たりがない場合は、上記 URL リンクをクリックしないで
+      text8: メールを削除してください。クリックして 新しいパスワードの設定を
+      text9: 完了しない限り、パスワードのリセットは行われません。
+
+  date:
+    abbr_day_names:
+    - 日
+    - 月
+    - 火
+    - 水
+    - 木
+    - 金
+    - 土
+    abbr_month_names:
+    -
+    - 1月
+    - 2月
+    - 3月
+    - 4月
+    - 5月
+    - 6月
+    - 7月
+    - 8月
+    - 9月
+    - 10月
+    - 11月
+    - 12月
+    day_names:
+    - 日曜日
+    - 月曜日
+    - 火曜日
+    - 水曜日
+    - 木曜日
+    - 金曜日
+    - 土曜日
+    formats:
+      default: ! '%Y/%m/%d'
+      long: ! '%Y年%m月%d日(%a)'
+      short: ! '%m/%d'
+    month_names:
+    -
+    - 1月
+    - 2月
+    - 3月
+    - 4月
+    - 5月
+    - 6月
+    - 7月
+    - 8月
+    - 9月
+    - 10月
+    - 11月
+    - 12月
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: 約1時間
+        other: 約%{count}時間
+      about_x_months:
+        one: 約1ヶ月
+        other: 約%{count}ヶ月
+      about_x_years:
+        one: 約1年
+        other: 約%{count}年
+      almost_x_years:
+        one: 1年弱
+        other: ! '%{count}年弱'
+      half_a_minute: 30秒前後
+      less_than_x_minutes:
+        one: 1分以内
+        other: ! '%{count}分未満'
+      less_than_x_seconds:
+        one: 1秒以内
+        other: ! '%{count}秒未満'
+      over_x_years:
+        one: 1年以上
+        other: ! '%{count}年以上'
+      x_days:
+        one: 1日
+        other: ! '%{count}日'
+      x_minutes:
+        one: 1分
+        other: ! '%{count}分'
+      x_months:
+        one: 1ヶ月
+        other: ! '%{count}ヶ月'
+      x_seconds:
+        one: 1秒
+        other: ! '%{count}秒'
+    prompts:
+      day: 日
+      hour: 時
+      minute: 分
+      month: 月
+      second: 秒
+      year: 年
+  errors:
+    format: ! '%{attribute}%{message}'
+    messages:
+      accepted: を受諾してください。
+      blank: を入力してください。
+      present: は入力しないでください。
+      confirmation: と%{attribute}の入力が一致しません。
+      empty: を入力してください。
+      equal_to: は%{count}にしてください。
+      even: は偶数にしてください。
+      exclusion: は予約されています。
+      greater_than: は%{count}より大きい値にしてください。
+      greater_than_or_equal_to: は%{count}以上の値にしてください。
+      inclusion: は一覧にありません。
+      invalid: は不正な値です。
+      less_than: は%{count}より小さい値にしてください。
+      less_than_or_equal_to: は%{count}以下の値にしてください。
+      not_a_number: は数値で入力してください。
+      not_an_integer: は整数で入力してください。
+      odd: は奇数にしてください。
+      record_invalid: バリデーションに失敗しました。 %{errors}
+      restrict_dependent_destroy: ! '%{record}が存在しているので削除できません。'
+      taken: はすでに存在します。
+      too_long: は%{count}文字以内で入力してください。
+      too_short: は%{count}文字以上で入力してください。
+      wrong_length: は%{count}文字で入力してください。
+      other_than: "は%{count}以外の値にしてください。"
+    template:
+      body: 次の項目を確認してください。
+      header:
+        one: ! '%{model}にエラーが発生しました。'
+        other: ! '%{model}に%{count}個のエラーが発生しました。'
+  helpers:
+    select:
+      prompt: 選択してください。
+    submit:
+      create: 登録する
+      submit: 保存する
+      update: 更新する
+  number:
+    currency:
+      format:
+        delimiter: ! ','
+        format: ! '%n%u'
+        precision: 0
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+        unit: 円
+    format:
+      delimiter: ! ','
+      precision: 3
+      separator: .
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion: 十億
+          million: 百万
+          quadrillion: 千兆
+          thousand: 千
+          trillion: 兆
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: ! '%n%u'
+        units:
+          byte: バイト
+          gb: ギガバイト
+          kb: キロバイト
+          mb: メガバイト
+          tb: テラバイト
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: と
+      two_words_connector: と
+      words_connector: と
+  time:
+    am: 午前
+    formats:
+      default: ! '%Y/%m/%d %H:%M:%S'
+      long: ! '%Y年%m月%d日(%a) %H時%M分%S秒 %z'
+      short: ! '%y/%m/%d %H:%M'
+    pm: 午後
+
+  management:
+    urltitle:
+      index:
+        new: 新規登録
+        download: ダウンロード
+        import: アップロード
+        url: URL
+        title: タイトル
+        service: サービス
+        media: 媒体
+        url_type: URLタイプ
+        destory_confirm: 削除してもよろしいですか？
+        edit: 編集
+        destory: 削除
+        csv_import_title: CSVアップロード
+        file: ファイルを選択
+        drag_and_drop: "ここにファイルをドラッグ＆ドロップ！"
+        close: 閉じる
+        save: 反映する
+        upload_description: アップロード後すぐに反映されます
+      form:
+        title: タイトル
+        url: URL
+        update: 登録する
+    profile:
+      index:
+        name: 名前
+        email: Eメールアドレス
+        station: 部署
+        unit: チーム
+        auth_type: 権限
+        download: ダウンロード
+        import: アップロード
+        new: 新規作成
+        destory_confirm: 削除してもよろしいですか？
+        edit: 編集
+        destory: 削除
+        csv_import_title: CSVアップロード
+        file: ファイルを選択
+        drag_and_drop: "ここにファイルをドラッグ＆ドロップ！"
+        close: 閉じる
+        save: 反映する
+        upload_description: アップロード後すぐに反映されます
+      form:
+        email: メールアドレス
+        email_confirm: メールアドレス確認
+        password: パスワード
+        password_confirm: パスワード確認
+        name: 名前（性）
+        name2: 名前（名）
+        name_read: ふりがな（性）
+        name_read2: ふりがな（名）
+        station: "所属（部署）"
+        unit: "所属（チーム）"
+        auth_type: 権限
+        update: 保存
+      create:
+        error:
+          email_address_format_is_incorrect: メールアドレスを正しく入力して下さい
+          enter_email_address: メールアドレスを入力して下さい
+          notsame_email: メールアドレスが一致しません
+          invalid_email_domain: "登録可能なメールアドレスのドメインは、%{domain} です"
+          not_found_email: 入力されたメールアドレスは存在しません
+          password_between_8_to_16: パスワードは８〜１６文字で入力して下さい
+          enter_password: パスワードを入力して下さい
+          notsame_password: パスワードが一致しません
+          enter_name: 名前を入力して下さい
+          enter_name_read: ふりがなを入力して下さい
+          enter_unit: 所属（チーム）を入力して下さい
+          enter_station: 所属（部署）を入力して下さい
+      update:
+        error:
+          enter_name: 名前を入力して下さい
+          enter_name_read: ふりがなを入力して下さい
+          enter_unit: 所属（チーム）を入力して下さい
+          enter_station: 所属（部署）を入力して下さい
+
+    station:
+      index:
+        new: 新規作成
+        name: 部署・チーム
+        is_del: ステータス
+        valid: 有効
+        invalid: 無効
+        created_at: 作成日時
+        edit: 編集
+        destory: 削除
+      edit:
+        name: 部署
+      new:
+        name: 部署
+      form:
+        name_ja: 部署名
+        update: 登録
+      create:
+        error:
+          enter_name: 部署名を入力して下さい
+      update:
+        error:
+          enter_name: 部署名を入力して下さい
+
+    unit:
+      form:
+        new: 新規作成
+        unit: 部署名
+        name_ja: チーム名
+        update: 登録
+      new:
+        name: チーム
+      edit:
+        name: チーム
+      create:
+        error:
+          enter_name: チーム名を入力して下さい
+      update:
+        error:
+          enter_name: チーム名を入力して下さい
+
+    information:
+      index:
+        new: 新規追加
+        type: タイプ
+        title: タイトル
+        is_mail: メール有無
+        created_at: 作成日時
+        edit: 編集
+        destory: 削除
+        destory_confirm: 削除してもよろしいですか？
+        mail:
+          sent: メール送信済み
+          not_sent: メール未送信
+      form:
+        title: タイトル
+        information_type: タイプ
+        description: 内容
+        del_flag: 無効
+        is_mail: メール送信
+        subject: メールタイトル
+        body: メール本文
+        created_at: 掲載日時
+        update: 保存
+        copy: 他のお知らせの内容をコピー
+    uupv:
+      show:
+        start: 開始日
+        end: 終了日
+        download: ダウンロード

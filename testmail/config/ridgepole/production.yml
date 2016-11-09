@@ -1,0 +1,6 @@
+adapter: mysql2
+encoding: utf8
+database: heroku_07712c5912dca3c
+username: be798d5829405e
+password: 73170f47
+host: us-cdbr-iron-east-04.cleardb.net

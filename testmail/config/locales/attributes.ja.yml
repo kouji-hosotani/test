@@ -1,0 +1,105 @@
+ja:
+  activerecord:
+    models:
+        admin_user: 管理者
+        user: ユーザ
+        auth_type: ユーザタイプ
+        comment: コメント
+        information: お知らせ
+        information_type: お知らせタイプ
+        logs: ログ（使用不可）
+        profile: プロフィール
+        station: 部署
+        unit: チーム名 
+
+    attributes:
+      url_title:
+        url: URL
+        title: タイトル
+        url_type: URLタイプ
+        service: サービス
+        media: 媒体
+        campaign: キャンペーン
+      admin_user:
+        email: 'メールアドレス'
+        current_sign_in_at: '最終ログイン日時'
+        last_sign_in_at: '最終ログイン日時'
+        sign_in_count: 'ログイン回数'
+        created_at: '作成日時'
+        updated_at: '更新日時'
+        expired_at: '有効日時'
+        deleted_at: '削除日時'
+        password: 'パスワード'
+        current_sign_in_ip: '最終ログインIP'
+        last_sign_in_ip: '最終ログインIP'
+        password_confirmation: 'パスワード(再入力)'
+        current_password: "現在のパスワード"
+        remember_me: 'ログイン状態を保持する'
+      auth_type:
+        name: タイプ名
+        name_ja: タイプ名（日本語）
+        del_flag: 削除
+        created_at: '作成日時'
+        updated_at: '更新日時'
+      comment:
+      information:
+        information_type: お知らせタイプ
+        information_type_id: お知らせタイプ
+        title: タイトル
+        description: 詳細
+        is_mail: メールで送信
+        subject: タイトル
+        body: 本文
+        del_flag: 削除
+        created_at: '作成日時'
+        updated_at: '更新日時'
+      information_type:
+        name: タイプ名
+        del_flag: 削除
+        created_at: '作成日時'
+        updated_at: '更新日時'
+      user:
+        email: 'メールアドレス'
+        current_sign_in_at: '最終ログイン日時'
+        last_sign_in_at: '最終ログイン日時'
+        sign_in_count: 'ログイン回数'
+        created_at: '作成日時'
+        updated_at: '更新日時'
+        expired_at: '有効期限'
+        deleted_at: '削除日時'
+        password: 'パスワード'
+        current_sign_in_ip: '最終ログインIP'
+        last_sign_in_ip: '最終ログインIP'
+        password_confirmation: 'パスワード(再入力)'
+        current_password: "現在のパスワード"
+        remember_me: 'ログイン状態を保持する'
+      profile:
+        profile: 'プロフィールID'
+        user_id: 'ユーザID'
+        name: '名字'
+        name_read: '名字 読み'
+        name2: '名前'
+        name_read2: '名前 読み'
+        station_id: '部署名'
+        unit_id: 'チーム名'
+        auth_type_id: '権限'
+        deleted_at: '削除日時'
+        created_at: '作成日時'
+        updated_at: '更新日時'
+      station:
+        name_en: 部署名（英語）
+        name_ja: 部署名（日本語）
+        del_flag: 削除
+        created_at: '作成日時'
+        updated_at: '更新日時'
+      unit:
+        station_id: 部署名
+        station: 部署名
+        name_en: チーム名（英語）
+        name_ja: チーム名（日本語）
+        del_flag: 削除
+        created_at: '作成日時'
+        updated_at: '更新日時'
+      post:
+        title: '題名'
+        body: '内容'

@@ -1,0 +1,175 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+
+  users:
+    error:
+      system_error: "System error"
+    passwords:
+      new:
+        title: Password reset
+        email: "Email address"
+        email_address_again: "Email address again"
+        send_conﬁrmation_email: "Send confirmation email"
+      create:
+        error:
+          email_address_format_is_incorrect: Email address format is incorrect
+          enter_email_address: Enter email address
+          notsame_email: Email not same
+          invalid_email_domain: "Valid domain of email adrees is %{domain} ."
+          not_found_email: Not found email adress.
+      result:
+        title: Reset password
+        update_email_link_click_on_notification_email: "Instruction has been sent to provided email address. Click link in the email to proceed to update profile information."
+        password_reset_email_link_click_on_notification_email:  "If link provided in instruction in email is not clicked within 8 hours, temporary registration data will be automatically deleted."
+      edit:
+        title: Update password
+        password: New passwoed
+        password_confirmation: New password confirmation
+        update_password: Update password
+      update:
+        error:
+          password_between_8_to_16: Password between 8 to 16
+          enter_password: Enter password
+          notsame_password: Invalid password
+      update_result:
+        title: Updated password!
+        notice: Please go login page.
+        to_top: Login
+
+      error:
+        ticket_expire:
+          title: Expired url.
+          notice: '"Guidance of the e-mail address change" mail expiration date that you send might be off to your designated e-mail address.'
+          try: Click the button below thank you to register your email address again.
+          again: Input email address again
+
+    registrations:
+      interm:
+        title: Register email
+        email: "Email address"
+        email_address_again: "Email address again"
+        send_conﬁrmation_email: "Send confirmation email"
+      interim_create:
+        error:
+          email_address_format_is_incorrect: Email address format is incorrect
+          enter_email_address: Enter email address
+          notsame_email: Email not same
+          invalid_email_domain: "Valid domain of email adrees is %{domain} ."
+          duplicate_email: Duplicate email
+      interim_result:
+        title: Registered email
+        update_email_link_click_on_notification_email: "Instruction has been sent to provided email address. Click link in the email to proceed to update profile information."
+        email_8_hours_expiration:  "If link provided in instruction in email is not clicked within 8 hours, temporary registration data will be automatically deleted."
+      new:
+        title: Member registration
+        name: Name
+        name_read: Name 2
+        unit: Unit
+        password: Password
+        password_confirmation: Password confirmation
+        terms: Terms of service
+        terms_att: "(Please check)"
+        register: Register
+      create:
+        error:
+          password_between_8_to_16: Password between 8 to 16
+          enter_password: Enter password
+          notsame_password: Invalid password
+          enter_name: Enter name
+          enter_name_read: Enter name 2
+          enter_unit: Enter unit 
+          enter_station: Enter unit 2
+
+      result:
+        title: Registration has been completed
+        notice: Please go login page.
+        to_top: Login
+      edit:
+        title: Change password
+        password: New password
+        password_confirmation: New password confirmation
+        current_password: Current password
+      profile_edit:
+        title: Profile update
+        name: Name
+        name_read: Name 2
+        unit: Unit
+        update: update
+      profile_update:
+        error:
+          enter_name: Enter name
+          enter_name_read: Enter name 2
+          enter_unit: Enter unit 
+          enter_station: Enter unit 2
+      layouts:
+        terms:
+          title: Terms of services
+          notice1: "《重要》 データ利用上の遵守事項"
+          notice2: "本データは株式会社KDDIと株式会社Medibaとの利用契約に基づいてデータの活用が認められております。"
+          notice3: "以下の遵守事項をよくお読みいただきご利用いただきますようお願いいたします。"
+          notice4: "◆利用前提"
+          notice5: "KDDIのデータ販売機会の喪失に繋がる行為は行わない。"
+          notice6: "◆データの利用目的"
+          notice7: "広告業務及びそれに付随する業務（コンサルティング業務、データ分析業務等を含む）にのみ利用する。"
+          notice8: " ◆データの取り扱い"
+          notice9: "データのみの定期的な提供及び再販売（無料提供含む）は行わない。"
+          notice10: "また、提供したデータを第三者から他の第三者に開示させない。"
+          notice11: "◆データの開示範囲"
+          notice12: "市場調査会社、コンサルティング会社、他の広告代理店への開示は不可。"
+          notice13: "□本データの利用に際しては上記を遵守することを承諾いたします。"
+          terms_agree: Agree
+      error:
+        ticket_expire:
+          title: Expired url.
+          notice: '"Guidance of the e-mail address change" mail expiration date that you send might be off to your designated e-mail address.'
+          try: Click the button below thank you to register your email address again.
+          again: Register email address again
+
+    notice_mailer:
+      sendmail_confirm:
+        subject: 【tuna】Register user account
+        text1: "* This notification is being sent to email address you have submitted"
+        text1_2: ""
+        title: tuna Register user account.
+        text2: Welcome.
+        text3: Your account will be created shortly. Please click the link below and take next steps on your web browser.
+        text4: "This link will stay valid for 8 hours from when you received this notification. After 8 hours, your request to create account will be disregarded."
+        text5: "If clicking the link does not work, please copy and paste the link onto your web browser address bar and proceed."
+        text6: "Sincerely,"
+        text7: "* Please do not reply. This notification email address cannot take replies."
+        text8: " "
+        text9: " "
+      sendmail_confirm:
+        subject: 【tuna】Reset password informations
+        text1: "* This notification is being sent to email address you have submitted"
+        text1_2: ""
+        title: tuna Reset password informations
+        text2: Welcome.
+        text3: Please click the link below and take next steps on your web browser.
+        text4: "This link will stay valid for 8 hours from when you received this notification. After 8 hours, your request to create account will be disregarded."
+        text5: "If clicking the link does not work, please copy and paste the link onto your web browser address bar and proceed."
+        text6: "Sincerely,"
+        text7: "* Please do not reply. This notification email address cannot take replies."
+        text8: " "
+        text9: " "

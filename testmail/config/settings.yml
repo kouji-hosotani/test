@@ -1,0 +1,24 @@
+defaults: &defaults
+  test_mail:
+    from: cyber.exercise@gmail.com
+
+  secret_key_base: 196434c5c7c77f313937e9a0677c3f899df20a133a7cb894c73ddbe9ce4af928bb84ac6b15e875eb8470eb7ebed87915c05ebff1f8852416a6c852e84870ae1e
+development:
+  <<: *defaults
+  secret_key_base: 08e21e1b8fa3f2b1d59e3ae3bc67185929dc26c5292b6d09e1ca2f3d19459d6667058f2fcb1eaa9dc9444e0d1ff3172e15b6257233cc66aea24b3cad6719667e
+  host: localhost:3000
+
+devprod:
+  <<: *defaults
+  secret_key_base: 496434c5c7c77f313937e9a0677c3f899df20a133a7cb894c73ddbe9ce4af928bb84ac6b15e875eb8470eb7ebed87915c05ebff1f8852416a6c852e84870ae1e
+  host: newton-testmail.herokuapp.com
+
+staging:
+  <<: *defaults
+  secret_key_base: 596434c5c7c77f313937e9a0677c3f899df20a133a7cb894c73ddbe9ce4af928bb84ac6b15e875eb8470eb7ebed87915c05ebff1f8852416a6c852e84870ae1e
+  host: newton-testmail.herokuapp.com
+
+production:
+  <<: *defaults
+  secret_key_base: 2c0b8c7692aae7bc01c3012d718d975d7412aee66975973128d26bf7a683443e5cef86a6bae806fff98dbd13821773b3550dc48419458d1b4e5d26de59be7183
+  host: testmail-newton.herokuapp.com
