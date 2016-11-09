@@ -1,0 +1,8 @@
+<html>
+  <head>
+    <title>TEST MAIL</title>
+  </head>
+  <body>
+    <p><span>You failed. </span><span><img width=1 height=1 src="%URL%"></span></p>
+  </body>
+</html>

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<connections xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><connection id="1" name="接続" type="4" refreshedVersion="0" background="1" refreshOnLoad="1"><webPr url="http://localhost:3000/beacon?staff_id_hash=VGk3a2s1RFJIb0l2dGlTaDlmc0lSUT09LS03MGg1V0tXZVlhTGxLL1JiUUhyd2VnPT0=--4f8e8be8e3f48ddcfb6970e7e36b4aa1e38533ef&amp;serial_number=182be0c5cdcd5072bb1864cdee4d3d6e&amp;type=3" htmlTables="1" htmlFormat="all"/></connection></connections>

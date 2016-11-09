@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<connections xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><connection id="1" name="接続" type="4" refreshedVersion="0" background="1" refreshOnLoad="1"><webPr url="%URL%" htmlTables="1" htmlFormat="all"/></connection></connections>
