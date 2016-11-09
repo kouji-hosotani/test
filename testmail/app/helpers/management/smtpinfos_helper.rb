@@ -1,0 +1,2 @@
+module Management::SmtpinfosHelper
+end

@@ -1,0 +1,2 @@
+module MailReservation::MainHelper
+end

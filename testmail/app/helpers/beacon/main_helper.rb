@@ -1,0 +1,2 @@
+module Beacon::MainHelper
+end

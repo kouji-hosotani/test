@@ -1,0 +1,2 @@
+module OpenReport::MainHelper
+end

@@ -1,0 +1,2 @@
+module MailTemplate::MainHelper
+end

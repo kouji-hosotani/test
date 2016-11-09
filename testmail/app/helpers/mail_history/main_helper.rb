@@ -1,0 +1,2 @@
+module MailHistory::MainHelper
+end
