@@ -1,0 +1,40 @@
+// Place all the styles related to the mail_reservation::main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#js-hour {
+  display: inline-block;
+  width: 120px;
+  margin-left: 20px;
+  margin-right: 5px;
+}
+#js-temp {
+  width: 10px;
+  margin-left: 0px;
+}
+#staff-area {
+  height: 605px;
+  overflow: scroll;
+}
+.staff-scroll{
+  width: 1200px;
+}
+
+input[type="checkbox"]:indeterminate:after{
+  content: "";
+  background-color: #4582ec;
+  border-color: #4582ec;
+}
+
+input[type="checkbox"]:indeterminate:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 5px;
+    display: table;
+    width: 8px;
+    height: 9px;
+    border: 2px solid #fff;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+}
