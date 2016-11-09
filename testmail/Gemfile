@@ -1,0 +1,89 @@
+source 'https://rubygems.org'
+
+ruby '2.2.3'
+
+gem 'rails', '4.2.6'
+gem 'mysql2', '~> 0.3.18'
+gem 'squeel', '~> 1.2.3'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'therubyracer',  platforms: :ruby
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'turbolinks'
+gem 'jbuilder', '~> 2.0'
+gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'spring',        group: :development
+gem 'rails-i18n'
+gem 'sprockets', '2.12.4'
+gem 'sprockets-rails', '2.3.2', :require => 'sprockets/railtie'
+gem 'execjs'
+gem 'rails_12factor',        group: :production
+
+#scss bootswatch
+gem 'bootswatch-rails'
+gem 'autoprefixer-rails'
+
+# twitter bootstrap css & javascript toolkit
+gem 'bootstrap-sass', '~> 3.1.1'
+gem 'sass-rails', '~> 4.0.3'
+
+# twitter bootswatch
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
+# twitter bootstrap switch
+gem "bootstrap-switch-rails"
+
+# haml
+gem 'haml-rails'
+gem 'erb2haml'
+
+gem 'html2slim'
+gem 'slim-rails'
+
+# user auth
+gem 'devise'
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'bson_ext'
+gem 'io-console' , '0.4.3'
+
+#instance variables controller -> js
+gem 'gon'
+
+# for contact
+gem 'mail_form'
+
+group :deployment do
+  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+end
+
+gem "paranoia", :github => "radar/paranoia", :branch => "rails4"
+gem 'paranoia_uniqueness_validator', '1.1.0'
+
+# db schema management
+gem 'ridgepole'
+
+# xlsx作成用
+gem 'rubyXL'
+
+gem 'roo', '~> 2.1.0'
+gem 'kaminari'
+gem "jquery-fileupload-rails"
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
+
+# management config
+gem "settingslogic"
+
+gem 'whenever', :require => false
+gem 'aws-sdk'
+gem 'mail'
+
+# herokuにて環境変数設定用
+gem "figaro"
+
+# zipファイル作成用
+gem 'rubyzip'
