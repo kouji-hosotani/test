@@ -1,0 +1,134 @@
+$ ->
+  $("#unit_modal_label").html($("#profile_station_id option:selected").text() + " 新規追加")
+
+  # change form select.
+  $("#profile_station_id").change ->
+    station_name = $(this).children("option:selected").text()
+    # set create unit url.
+    $unit_form = $("#unitForm");
+    $unit_form.attr("action", "/users/station/#{$(this).val()}/unit")
+
+    $.ajax
+      url: "/management/get/unit/#{$(this).val()}"
+      cache: false
+      dataType: "json"
+      beforeSend: (xhr, settings) ->
+        $("#profile_unit_id").html "<option>Now loading</option>"
+        $("#jsRegisterdSubmit").attr('disabled', true);
+      complete: (xhr, textStatus) ->
+        $("#jsRegisterdSubmit").removeAttr('disabled');
+      success: (o) ->
+        html = undefined
+        if o.length > 0
+          $("#unit_modal_label").html(station_name  + " 新規追加")
+          $.each o, ->
+            html += "<option value='#{this.id}'>#{this.name_ja}</option>\n"
+        else
+          html = ""
+        $("#profile_unit_id").html html
+      error: (xhr, textStatus, errorThrown) ->
+        alert "Can not get units data."
+
+
+  # add station modal
+  $("#save_station").click ->
+    if (event.preventDefault) then event.preventDefault() else event.returnValue = false
+
+    $form = $("#stationForm");
+    $button = $form.find('button');
+
+    $.ajax
+      url: $form.attr("action")
+      type: $form.attr("method")
+      data: $form.serialize() + "&delay=1"
+      timeout: 10000
+
+      beforeSend: (xhr, settings) ->
+        $button.attr "disabled", true
+        $("#station_ja_formgroup").removeClass("has-error")
+        $("#station_en_formgroup").removeClass("has-error")
+        $("#station_ja_error").html ""
+        $("#station_en_error").html ""
+
+      complete: (xhr, textStatus) ->
+        $button.attr "disabled", false
+
+      success: (result, textStatus, xhr) ->
+        console.log result.code
+        if result.code == 404
+          if result.message.name_ja
+            $("#station_ja_formgroup").addClass("has-error")
+            $("#station_ja_error").html result.message.name_ja
+          if result.message.name_en
+            $("#station_en_formgroup").addClass("has-error")
+            $("#station_en_error").html result.message.name_en
+
+        if result.code == 200
+          html = undefined
+          count = result.data.length
+          i = 1;
+          $.each result.data , ->
+            html += "<option value='#{this.id}'"
+            if count == i
+              html += " selected "
+            html += ">#{this.name_ja}</option>\n"
+            i++
+          $("#profile_station_id").html html
+
+          $('#station_modal').modal 'hide'
+          $form[0].reset();
+          $("#profile_unit_id").html ""
+
+      error: (xhr, textStatus, error) ->
+        alert "Can not create station."
+
+  # add unit modal
+  $("#save_unit").click ->
+    if (event.preventDefault) then event.preventDefault() else event.returnValue = false
+
+    $form = $("#unitForm");
+    $button = $form.find('button');
+
+    $.ajax
+      url: "/users/station/#{$("#profile_station_id").val()}/unit"
+      type: $form.attr("method")
+      data: $form.serialize() + "&delay=1"
+      timeout: 10000
+
+      beforeSend: (xhr, settings) ->
+        $button.attr "disabled", true
+        $("#unit_ja_formgroup").removeClass("has-error")
+        $("#unit_en_formgroup").removeClass("has-error")
+        $("#unit_ja_error").html ""
+        $("#unit_en_error").html ""
+
+      complete: (xhr, textStatus) ->
+        $button.attr "disabled", false
+
+      success: (result, textStatus, xhr) ->
+        console.log result.code
+        if result.code == 404
+          if result.message.name_ja
+            $("#unit_ja_formgroup").addClass("has-error")
+            $("#unit_ja_error").html result.message.name_ja
+          if result.message.name_en
+            $("#unit_en_formgroup").addClass("has-error")
+            $("#unit_en_error").html result.message.name_en
+
+        if result.code == 200
+          html = undefined
+          count = result.data.length
+          i = 1;
+          $.each result.data , ->
+            html += "<option value='#{this.id}'"
+            if count == i
+              html += " selected "
+            html += ">#{this.name_ja}</option>\n"
+            i++
+          $("#profile_unit_id").html html
+
+          $('#unit_modal').modal 'hide'
+          $form[0].reset();
+
+      error: (xhr, textStatus, error) ->
+        alert "Can not create station."
